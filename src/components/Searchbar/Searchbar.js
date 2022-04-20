@@ -20,18 +20,19 @@ class Searchbar extends Component {
       this.setState({ [name]: value });
    }
    render() {
+      const { searchQuery } = this.state;
       return (
          <header className={s.searchbar}>
   <form className={s.form} onSubmit={this.handleSubmit}>
     <button type="submit" className={s.button}>
-      <span className={s.button_label}>Search</span>
+      <span className={s.label}>Search</span>
     </button>
 
     <input
       className={s.input}
       type="text"
-      autocomplete="off"
-      autofocus
+      autoComplete="off"
+      autoFocus
       placeholder="Search images and photos"
       name='searchQuery'
       onChange={this.handleChange}

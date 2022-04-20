@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import s from './ImageGallery.module.css';
-import  ImageGalleryItem  from 'components/ImageGalleryItem/ImageGalleryItem';
+import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
 
 class ImageGallery extends Component {
   static propTypes = {
     onClick: PropTypes.func.isRequired,
-    onItemClick: PropTypes.func.isRequired,
+    onImgClick: PropTypes.func.isRequired,
     images: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -26,9 +26,10 @@ class ImageGallery extends Component {
       <ul className={s.list} onClick={this.handleOpenModal}>
         {images &&
           images.map((image) => (
-            <ImageGalleryItem
-               key={image.id} image={image} onCLick={onImgClick} />
-         ))}
+            <li key={image.id} className={s.item}>
+              <ImageGalleryItem {...image} onImgClick={onImgClick} />
+            </li>
+          ))}
       </ul>
     );
   }
